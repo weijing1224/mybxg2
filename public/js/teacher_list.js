@@ -1,5 +1,5 @@
 define(['jquery','template'],function($,template){
-	// 调用接口获取获取所有讲师的数据
+	// 调用接口获取获取所有讲师的数据(讲师列表)
 	$.ajax({
 		url: '/api/teacher',
 		type: 'get',
@@ -11,7 +11,6 @@ define(['jquery','template'],function($,template){
 			var html = template('teachertpl',{list:data.result});
 			$('#teacherInfo').html(html);
 
-
 			// 完成讲师的注销和启用功能
 			$('.enable').click(function(){
 				// 获取注销/启用按钮最近的父元素
@@ -19,7 +18,7 @@ define(['jquery','template'],function($,template){
 				// 获取自定义属性的值
 				var tcid = td.attr('data-tcid');
 				var status = td.attr('data-status');
-				console.log(tcid,status);
+				// console.log(tcid,status);
 				// 保存当前this的值
 				var $that = $(this)
 				// 通过ajax调用后台接口传响应的参数，得到后台的返回值
@@ -46,6 +45,41 @@ define(['jquery','template'],function($,template){
 				});
 				
 			});
+
+			// 完成讲师查看的功能
+			$('.preview').click(function (){
+				// 看后台接口文档知，ajax前后端交互需要传参，传tc_id 所以先获取它
+				var td = $(this).closest('td');
+				// 获取自定义属性的值
+				var tcid = td.attr('data-tcid');
+				// 通过ajax调用后台接口，向其中传后台需要的参数，得到相应的返回值
+				$.ajax({
+					url: '/api/teacher/view',
+					type: 'get',
+					dataType: 'json',
+					data: {tc_id: tcid},
+					success: function(data){
+						console.log(data);
+						// 绑定数据   注：模板引擎的id前面不要加#
+						var html = template('modelTpl',data.result);
+						// 添加数据，模板渲染
+						$('#modelInfo').html(html);
+						// 模态框显示  bootstrap 的让模态框显示的方法  所以要引入bootstrap插件
+						$('#teacherModal').modal();
+
+					}
+				})
+
+				
+
+
+
+			}); 
+			
+			
+			
+
+			
 		}
 		
 	})

@@ -1,4 +1,4 @@
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','cookie','bootstrap'],function($,template){
   // NProgress.start();
   // NProgress.done();
 
