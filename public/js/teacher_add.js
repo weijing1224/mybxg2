@@ -13,12 +13,35 @@ define(['jquery','template','util'],function($,template,util) {
 				data.result.abc = '编辑讲师';       //表示给data.result 加一个abc的属性，属性值为'编辑讲师'
 				var html = template('teacherTpl',data.result);
 				$('#teacherEdit').html(html);
+				// 处理表单提价，调用方法
+				submitForm('/api/teacher/update');
 			}
 		});
 	}else{
 		// 添加操作
 		var html = template('teacherTpl',{abc:'添加讲师'});
 		$('#teacherEdit').html(html);
+		submitForm('/api/teacher/add');
+	}
+
+	// 实现表单提交（修改讲师）
+	function submitForm(url) {
+		$('#teacherBtn').click(function(){
+				$.ajax({
+				url: url,
+				type: 'post',
+				dataType: 'json',
+				data: $('#teacherForm').serialize(),
+				success:function(data){
+					// 响应成功，重新跳转到登录页
+					if (data.code==200) {
+						location.href='/teacher/list';
+					}
+				}
+			})
+		
+		});
+		
 	}
 
 })
