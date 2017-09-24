@@ -22,7 +22,7 @@
                     <li class="active">讲师列表</li>
                 </ol>
                 <div class="page-title">
-                    <a href="./teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                    <a href="/teacher/add" class="btn btn-success btn-sm pull-right">添加讲师</a>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -97,7 +97,7 @@
                             {{if tc_avatar}}
                             <img src="{{tc_avatar}}" alt="">
                             {{else}}
-                            <img src="./images/default.png" alt="">
+                            <img src="/public/images/default.png" alt="">
                             {{/if}}
                         </div>
                     </td>
@@ -151,7 +151,7 @@
                 <td data-tcid='{{$value.tc_id}}' data-status='{{$value.tc_status}}'>
                     <!-- data-toggle="modal" 为模态框自带的显示隐藏切换属性，去掉它，自己通过js来控制它，让它显示隐藏 -->
                     <a href="#teacherModal" class="btn btn-info btn-xs preview">查 看</a>
-                    <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
+                    <a href="/teacher/add?tc_id={{$value.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
                     <!-- 完成讲师的注销和启用功能，点击切换，给按钮绑定点击事件，加一个类名，不能加id是因为按钮在模板引擎中，会造成id重复 -->
                     <!-- 注销\启用不能写死，通过{{$value.tc_status}} 来判断的 前后台的约定-->
                     <a href="javascript:;" class="btn btn-warning btn-xs enable">

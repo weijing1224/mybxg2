@@ -9,6 +9,8 @@ require.config({
 		common : '../js/common',
 		login : '../js/login',
 		teacherlist: '../js/teacher_list',
+		teacheradd:'../js/teacher_add',
+		util: '../js/util',
 		bootstrap: 'bootstrap/js/bootstrap.min'
 	},
 	// 配置非标准化、不兼容的模块
