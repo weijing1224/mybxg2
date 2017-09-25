@@ -1,4 +1,4 @@
-define(['jquery','template','util'],function($,template,util) {
+define(['jquery','template','util','datepicker','language'],function($,template,util) {
 	var tcid = util.qs('tc_id');
 	// 判断 tcid 的值,进行相应的操作
 	if (tcid) {
