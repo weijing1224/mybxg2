@@ -13,7 +13,9 @@ require.config({
 		util: '../js/util',
 		bootstrap: 'bootstrap/js/bootstrap.min',
 		datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.min',
-		language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
+		language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+		validate: 'jquery-form/jquery-validate.min',
+		form: 'jquery-form/jquery.form'
 	},
 	// 配置非标准化、不兼容的模块
 	shim: {
@@ -22,6 +24,9 @@ require.config({
 			deps: ['jquery']
 		},
 		language: {
+			deps: ['jquery','datepicker']
+		},
+		validate: {
 			deps: ['jquery']
 		}
 
